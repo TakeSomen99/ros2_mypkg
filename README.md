@@ -9,6 +9,7 @@ Raspberry Piを含むUSB付きシングルボードコンピュータに接続�
 + OS: Ubuntu 24.04 LTS
 + ROS2: Jazzy
 + Python: 3.12.3
++ CMake: 3.28.3
 + 動作確認済みマイコン環境:
   + Raspberry Pi 3B
 
