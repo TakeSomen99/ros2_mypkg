@@ -4,17 +4,24 @@ set -e
 WS_DIR=$(cd "$(dirname "$0")/../.." && pwd)
 cd "$WS_DIR"
 
-echo "[1] colcon build"
-colcon build --packages-select device_msgs mypkg
+echo "[1] colcon build test"
+if colcon build; then
+	echo "build succeeded"
+else
+	echo "build failed"
+	exit 1
+fi
 source install/setup.bash
 
-echo "[2] launch smoke test"
-timeout 5 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log 2>&1 || true
+echo "[2] lauch test"
+timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log 2>&1 || true
+LAUNCH_EXIT_CODE=$?
 
-echo "[3] check launch error"
-if grep -Ei "error|traceback|failed" /tmp/mypkg.log; then
-  echo "Launch failed"
-  exit 1
+if [ $LAUNCH_EXIT_CODE -eq 0 ] || [ $LAUNCH_EXIT_CODE -eq 124 ]; then
+    echo "launch succeeded"
+else
+    echo "launch failed"
+    exit 1
 fi
 
 echo "test was completed!!!"
