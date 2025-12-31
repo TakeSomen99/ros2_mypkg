@@ -20,7 +20,8 @@ jobs:
           sudo apt install -y python3-colcon-common-extensions python3-rosdep
           sudo rosdep init || true
           rosdep update
-          rosdep install --from-paths src --ignore-src -y
+          export ROS_DISTRO=jazzy
+          rosdep install --from-paths src --ignore-src -y 
 
       - name: Build workspace
         run: |
