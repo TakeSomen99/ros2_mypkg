@@ -14,10 +14,13 @@ jobs:
         with:
           required-ros-distributions: jazzy
 
-      - name: Install dependencies
+      - name: Install ROS2 dependencies
         run: |
           sudo apt update
-          sudo apt install -y python3-colcon-common-extensions ros-jazzy-ros-base
+          sudo apt install -y python3-colcon-common-extensions python3-rosdep
+          sudo rosdep init || true
+          rosdep update
+          rosdep install --from-paths src --ignore-src -y
 
       - name: Build workspace
         run: |
