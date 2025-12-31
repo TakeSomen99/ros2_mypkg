@@ -3,6 +3,7 @@ Raspberry Piを含むUSB付きシングルボードコンピュータに接続�
 
 
 ![Static Badge](https://img.shields.io/badge/python-blue)
+![CMake](https://img.shields.io/badge/CMake-3.8%2B-blue?logo=cmake)
 
 ## 動作環境
 + OS: Ubuntu 24.04 LTS
