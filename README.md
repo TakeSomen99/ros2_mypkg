@@ -1,5 +1,5 @@
 # ros2_mypkg
-raspberrypiを含むUSB付きシングルボードコンピュータに接続されている外部デバイスを人間が見て分かりやすい製品名で表示するパッケージです。
+Raspberry Piを含むUSB付きシングルボードコンピュータに接続されている外部デバイスを人間が見て分かりやすい製品名で表示するパッケージです。
 
 
 ![Static Badge](https://img.shields.io/badge/python-blue)
