@@ -1,15 +1,18 @@
 # ros2_mypkg
-raspberrypiを含むUSB付きシングルボードコンピュータに接続されている外部デバイスを一目で分かる様に出力します。
+raspberrypiを含むUSB付きシングルボードコンピュータに接続されている外部デバイスを人間が見て分かりやすい製品名で表示するパッケージです。
 
 
 ![Static Badge](https://img.shields.io/badge/python-blue)
 
 ## 動作環境
-+ Ubuntu: 24.04 LTS
++ OS: Ubuntu 24.04 LTS
++ ROS2: Jazzy
 + Python: 3.12.3
++ 動作確認済みマイコン環境:
+  + Raspberry Pi 3B
 
 ## 使用方法
-ELECOM製UVC WEBカメラ UCAM-CC310FBBKをRaspberry Pi 3BのUSB2.0ポートへつないだ時の出力を例とします。
+以下は**ELECOM製UVC WEBカメラ UCAM-CC310FBBK**をRaspberry Pi 3BのUSB2.0ポートへつないだ時の実行例です。
 ```bash
 $ git clone https://github.com/TakeSomen99/ros2_mypkg.git
 $ cd ~/ros2_mypkg
@@ -23,6 +26,15 @@ $ ros2 launch mypkg talk_listen.launch.py
 [INFO] [client-2]: process has finished cleanly [pid 9806]
 ``` 
 
+## 備考
+現在はUVC対応USBカメラを対象としています。
+USBキーボードやマウス、メモリなど、入力デバイスや記憶デバイスには対応しておりません。
+
+## 注意事項
++ Raspberry Pi はRaspberry Pi Ltd. の登録商標または商標です。
++ ELECOM はエレコム株式会社の登録商標または商標です。
++ 本リポジトリ内で言及されている製品名・商標は各権利者に帰属します。
++ 本ソフトウェアは、これらの企業・製品との公式な関係や提携を示すものではありません。
 
 
 ## ライセンス
