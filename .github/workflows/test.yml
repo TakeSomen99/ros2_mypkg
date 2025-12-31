@@ -39,6 +39,5 @@ jobs:
           pip install numpy
 
       - name: Run basic tests
-        run: |
-          bash -xv ./test.bash
+        run: bash -xv src/myokg/test/test.bash
 

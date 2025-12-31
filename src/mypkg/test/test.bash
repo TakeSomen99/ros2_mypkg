@@ -1,17 +1,30 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-dir=~
-[ "$1" != "" ] && dir="$1"
+echo "=== ROS2 integration test start ==="
 
-cd $dir/ros2_mypkg || exit 1
-colcon build || exit 1
+WS=~/ros2_ws
+mkdir -p $WS/src
+cp -r . $WS/src/ros2_mypkg
+
+cd $WS
+
+echo "[1] colcon build"
+colcon build --packages-select device_msgs mypkg
 
 source install/setup.bash
 
-timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
+echo "[2] launch test"
+timeout 10 ros2 launch mypkg talk_listen.launch.py > launch.log 2>&1 &
 
-grep 'DeviceService ready' /tmp/mypkg.log || exit 1
+sleep 3
 
-grep 'client' /tmp/mypkg.log || exit 1
+echo "[3] service existence test"
+ros2 service list | grep get_device_names
 
-echo "test completed"
+echo "[4] service call test"
+ros2 service call /get_device_names device_msgs/srv/Device "{}" \
+  | grep "\["
+
+echo "=== ROS2 integration test SUCCESS ==="
+
