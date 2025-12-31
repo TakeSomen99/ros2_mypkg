@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from mypkg.srv import Device
+from device_msgs.srv import Device
 import subprocess
 
 
@@ -26,7 +26,7 @@ def get_device_names_cb(request, response):
         response.names = devices
     except Exception as e:
         print(f"Failed to get device name: {e}")
-        response.name = []
+        response.names = []
 
     return response
 
