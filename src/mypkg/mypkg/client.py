@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+#SPDX-FileCopyrightText: 2025 TakeSomen99
+#SPDX-License-Identifier: BSD-3-Clause
+
 import rclpy
 from rclpy.node import Node
 from device_msgs.srv import Device

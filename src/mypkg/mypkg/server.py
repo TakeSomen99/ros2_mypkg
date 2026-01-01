@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#SPDX-FileCopyrightText: 2025 TakeSomen99
+#SPDX-License-Identifier: BSD-3-Clause
 
 import subprocess
 from glob import glob

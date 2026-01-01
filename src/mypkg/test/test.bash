@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
+#SPDX-FileCopyrightText: 2025 TakeSomen99
+#SPDX-License-Identifier: BSD-3-Clause
+
 set -e
 
 WS_DIR=$(cd "$(dirname "$0")/../.." && pwd)
