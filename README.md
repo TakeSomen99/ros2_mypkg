@@ -11,8 +11,11 @@ Raspberry Piを含むUSB付きシングルボードコンピュータに接続�
 + ROS2: Jazzy
 + Python: 3.12.3
 + CMake: 3.28.3
-+ 動作確認済みマイコン環境:
++ 動作確認済み環境:
+  + Ubuntu 24.04 LTS
   + Raspberry Pi 3B
+  + Python 3.10, 3.11, 3.12
+  + CMake 3.26, 3.27, 3.28
 
 ## 使用方法
 以下は**ELECOM製UVC WEBカメラ UCAM-CC310FBBK**をRaspberry Pi 3BのUSB2.0ポートへつないだ時の実行例です。
