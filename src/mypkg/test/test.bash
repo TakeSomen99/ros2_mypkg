@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 #SPDX-FileCopyrightText: 2025 TakeSomen99
 #SPDX-License-Identifier: BSD-3-Clause
 
