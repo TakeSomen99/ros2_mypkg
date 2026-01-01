@@ -26,6 +26,8 @@ jobs:
       - name: Build workspace
         run: |
           source /opt/ros/jazzy/setup.bash
+          echo "CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH"
+          echo "AMENT_PREFIX_PATH=$AMENT_PREFIX_PATH"
           colcon build --packages-select device_msgs mypkg
 
       - name: Run ROS2 integration test
