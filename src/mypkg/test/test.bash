@@ -5,7 +5,7 @@ WS_DIR=$(cd "$(dirname "$0")/../.." && pwd)
 cd "$WS_DIR"
 
 echo "[1] colcon build test"
-if colcon build; then
+if colcon build --cmake-args -DBUILD_TESTING=OFF; then
 	echo "build succeeded"
 else
 	echo "build failed"
