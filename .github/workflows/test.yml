@@ -1,5 +1,4 @@
 name: ros2-build-and-test
-shell: bash
 on:
   push:
 
@@ -32,6 +31,7 @@ jobs:
             ros-jazzy-ament-cmake
 
       - name: Build and test ROS2 workspace
+        shell: bash
         run: |
           set -e
 
