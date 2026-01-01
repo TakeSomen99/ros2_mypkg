@@ -7,6 +7,11 @@ jobs:
   build-and-test:
     runs-on: ubuntu-24.04
 
+    strategy:
+    matrix:
+      python-version: [3.10, 3.11]
+      cmake-version: [3.26, 3.27]
+
     steps:
       - uses: actions/checkout@v4
 
@@ -28,7 +33,6 @@ jobs:
         run: |
           set -e
 
-          # ROS2 環境を source
           if [ -f /opt/ros/jazzy/setup.bash ]; then
               source /opt/ros/jazzy/setup.bash
           else
@@ -36,15 +40,12 @@ jobs:
               exit 1
           fi
 
-          # 環境確認
           echo "CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH"
           echo "AMENT_PREFIX_PATH=$AMENT_PREFIX_PATH"
           echo "PATH=$PATH"
 
-          # ビルド
           colcon build --packages-select device_msgs mypkg --cmake-args -DBUILD_TESTING=OFF
 
-          # テスト
           chmod +x ./src/mypkg/test/test.bash
           ./src/mypkg/test/test.bash
 
