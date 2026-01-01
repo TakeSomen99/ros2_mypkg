@@ -1,23 +1,50 @@
-- name: Build and test ROS2 workspace
-  run: |
-    set -e
-    # ROS2 環境を source
-    if [ -f /opt/ros/jazzy/setup.bash ]; then
-        source /opt/ros/jazzy/setup.bash
-    else
-        echo "setup.bash not found!"
-        exit 1
-    fi
+name: ros2-build-and-test
 
-    # 環境確認
-    echo "CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH"
-    echo "AMENT_PREFIX_PATH=$AMENT_PREFIX_PATH"
-    echo "PATH=$PATH"
+on:
+  push:
 
-    # ビルド
-    colcon build --packages-select device_msgs mypkg --cmake-args -DBUILD_TESTING=OFF
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
 
-    # テスト
-    chmod +x ./src/mypkg/test/test.bash
-    ./src/mypkg/test/test.bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup ROS 2 Jazzy
+        uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: jazzy
+
+      - name: Install ROS2 dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            python3-colcon-common-extensions \
+            python3-rosdep \
+            ros-jazzy-ros-base \
+            ros-jazzy-ament-cmake
+
+      - name: Build and test ROS2 workspace
+        run: |
+          set -e
+
+          # ROS2 環境を source
+          if [ -f /opt/ros/jazzy/setup.bash ]; then
+              source /opt/ros/jazzy/setup.bash
+          else
+              echo "setup.bash not found!"
+              exit 1
+          fi
+
+          # 環境確認
+          echo "CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH"
+          echo "AMENT_PREFIX_PATH=$AMENT_PREFIX_PATH"
+          echo "PATH=$PATH"
+
+          # ビルド
+          colcon build --packages-select device_msgs mypkg --cmake-args -DBUILD_TESTING=OFF
+
+          # テスト
+          chmod +x ./src/mypkg/test/test.bash
+          ./src/mypkg/test/test.bash
 
