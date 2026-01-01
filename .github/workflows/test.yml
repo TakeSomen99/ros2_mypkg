@@ -1,5 +1,5 @@
 name: ros2-build-and-test
-
+shell: bash
 on:
   push:
 
