@@ -21,7 +21,9 @@ Raspberry Piを含むUSB付きシングルボードコンピュータに接続�
 以下は**ELECOM製UVC WEBカメラ UCAM-CC310FBBK**をRaspberry Pi 3BのUSB2.0ポートへつないだ時の実行例です。
 ```bash
 $ git clone https://github.com/TakeSomen99/ros2_mypkg.git
-$ cd ~/ros2_mypkg
+$ cd ros2_mypkg
+$ colcon build
+$ source install/setup.bash
 $ ros2 launch mypkg talk_listen.launch.py
 [INFO] [launch]: All log files can be found below /home/ubuntu/.ros/log/2025-12-31-22-06-41-492142-raspberrypi-9802
 [INFO] [launch]: Default logging verbosity is set to INFO
@@ -30,7 +32,8 @@ $ ros2 launch mypkg talk_listen.launch.py
 [server-1] [INFO] [1767186405.732563583] [device_server]: DeviceService ready. Waiting...
 [client-2] ['ELECOM_1MP_Webcam']
 [INFO] [client-2]: process has finished cleanly [pid 9806]
-``` 
+```
+なにもデバイスを検知できなかった場合[client-2]**[]**と表示されます。 
 
 ## 備考
 現在はUVC対応USBカメラを対象としています。
