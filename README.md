@@ -33,7 +33,7 @@ $ ros2 launch mypkg talk_listen.launch.py
 [client-2] ['ELECOM_1MP_Webcam']
 [INFO] [client-2]: process has finished cleanly [pid 9806]
 ```
-なにもデバイスを検知できなかった場合[client-2]**[]**と表示されます。 
+なにもデバイスを検知できなかった場合[client-2] **[]** と表示されます。 
 
 ## 備考
 現在はUVC対応USBカメラを対象としています。
