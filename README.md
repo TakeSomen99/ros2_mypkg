@@ -21,6 +21,7 @@ Raspberry Piを含むUSB付きシングルボードコンピュータに接続�
 + src/mypkg/mypkg/server.py
 + src/mypkg/mypkg/client.py
 + src/device_msgs/srv/Device.srv
+
 server.pyはマイコン等外部USB機器を使用する側で起動させてください。起動後server.pyはクライアントの要望に応じてDevice.srvで定義した型に則ってUSBデバイスの名前を送信します。メッセージのデータ型は下記の様にインポートすることが出来ます。
 ```python
 from devicd_msgs.srv import Device
