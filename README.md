@@ -26,7 +26,7 @@ server.pyはマイコン等外部USB機器を使用する側で起動させて�
 ```python
 from devicd_msgs.srv import Device
 ```
-具体的な呼び出し方法の具体例をclient.pyに記載しています。
+具体的なサービスの呼び出し例をclient.pyに記載しています。
 
 以下は**ELECOM製UVC WEBカメラ UCAM-CC310FBBK** をRaspberry Pi 3BのUSB2.0ポートへつないだ時の実行例です。
 ```bash
@@ -43,7 +43,7 @@ $ ros2 launch mypkg talk_listen.launch.py
 [client-2] ['ELECOM_1MP_Webcam']
 [INFO] [client-2]: process has finished cleanly [pid 9806]
 ```
-なにもデバイスを検知できなかった場合 **[client-2] []** と表示されます。ローンチファイルのみ動かした場合も同様の結果となります。本パッケージの起動確認の際にお使いください。
+デバイスを検知できなかった場合 **[client-2] []** と表示されます。ローンチファイルのみ動かした場合も同様の結果となります。本パッケージの起動確認の際にお使いください。
 
 ## 備考
 現在はUVC対応USBカメラを対象としています。
